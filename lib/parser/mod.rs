@@ -50,6 +50,7 @@ tag_token!(return_tag, Token::Return);
 tag_token!(lbrace_tag, Token::LBrace);
 tag_token!(rbrace_tag, Token::RBrace);
 tag_token!(lparen_tag, Token::LParen);
+tag_token!(function_tag, Token::Function);
 tag_token!(rparen_tag, Token::RParen);
 tag_token!(lbracket_tag, Token::LBracket);
 tag_token!(rbracket_tag, Token::RBracket);
@@ -60,7 +61,6 @@ tag_token!(minus_tag, Token::Minus);
 tag_token!(not_tag, Token::Not);
 tag_token!(if_tag, Token::If);
 tag_token!(else_tag, Token::Else);
-tag_token!(function_tag, Token::Function);
 tag_token!(eof_tag, Token::EOF);
 
 fn infix_op(t: &Token) -> (Precedence, Option<Infix>) {

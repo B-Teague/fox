@@ -5,53 +5,47 @@ This syntax is still in alpha.  Suggestions for simplifying the syntax are welco
 
 # features
 * Statically inferred data types
-* Immutable
+* Immutable data structures
+* Destructive Updates with Uniqueness Analysis
 * First class functions
-* Functions as values
-* Function chaining
+* Static dispatch
 * Tail call optimizations
-* No nulls, no thrown errors, only monads
+* Tagged Unions
 * Handlebars String templates
-* pattern matching
-* error propogation
+* Pattern matching
+* Error propogation
 
 # Example syntax
 ## Hello World
 ```fox
 hello = "Hello, World!"
-main = [] println(`{hello}`)
+main = ()->print("{hello}")
 ```
 
 ## Data Types
 ```fox
-int = 1
-float = 2.0f
-double = 3.0
-string = "hello"
-bool = true
-tuple = [0,"a",true]
-map = [ a: 1, 2: 2, "hi": 3 ]
+1:Int
+2.0f:Float
+3.0:Decimal
+"hello":Str
+true:Bool
+[1,2,3]:List
+(0,"a",true):Tuple
+{ a: 1, b: 2, c: "Hi" }: {a:Int, b:Int, c:Str}
 ```
-## Branching
+## Pattern Matching
 ```fox
-  match(1 == 2)
-  .when(true, "They match!")
-  .else("Different values")
-```
-## Monads
-```fox
-  map = [ a:1, b:2 ]
-  map
-  .c
-  .Some([val] val)
-  .None([] "Not Found")
+  1 == 2 ??
+  true -> "They match!"
+  false -> "Different values"
 ```
 
 ## Sample Functions
 ```fox
-factorial = [num] match(num)
-  .when([0,1], 1)
-  .else([num] num * factorial(num - 1))
+factorial=num->
+  num ??
+  0 -> 1
+  _ -> num * factorial(num - 1)
 
 factorial(10)
 ```
